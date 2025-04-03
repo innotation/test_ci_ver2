@@ -14,16 +14,16 @@ jobs:
 
     services:
       mysql:
-        image: mysql:8.3.0
+        image: mysql:latest
         env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.RootPassword }}
+          MYSQL_ROOT_PASSWORD: ${{ secrets.ROOTPASSWORD }}
           MYSQL_DATABASE: cjadb
-          MYSQL_USER: ${{ secrets.DatabaseId }}
-          MYSQL_PASSWORD: ${{ secrets.DatabasePassword }}
+          MYSQL_USER: ${{ secrets.DATABASEID }}
+          MYSQL_PASSWORD: ${{ secrets.DATABASEPASSWORD }}
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping -h localhost -u root -p${{ secrets.RootPassword }}"
+          --health-cmd="mysqladmin ping -h localhost -u root -p${{ secrets.ROOTPASSWORD }}"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=5
