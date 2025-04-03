@@ -48,5 +48,9 @@ jobs:
         run: chmod +x gradlew
       - name: Build With Gradle
         run: ./gradlew build -x test
+      - name: 의존성 트리 확인
+        run: ./gradlew dependencies
+      - name: clean cache
+        run: ./gradlew clean
       - name: Run tests
-        run: ./gradlew --scan test
+        run: ./gradlew test --debug
