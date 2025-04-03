@@ -18,9 +18,12 @@ public class MyBatisConfig {
             InputStream inputStream = null;
             try {
                 inputStream = Resources.getResourceAsStream("config/mybatis-config.xml");
+                if (inputStream == null) {
+                    throw new RuntimeException("MyBatis configuration file not found");
+                }
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
             } catch (IOException e) {
-                e.printStackTrace();
+                throw new RuntimeException("Error loading MyBatis configuration", e);
             }
         }
         return sqlSessionFactory.openSession(false);
